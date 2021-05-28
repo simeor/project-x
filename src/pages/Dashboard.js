@@ -26,7 +26,7 @@ export const Dashboard = () => {
           size={100}
           name={currentUser?.email}
           variant="beam"
-          colors={["#92A1C6", "#146A7C", "#F0AB3D", "#C271B4", "#C20D90"]}
+          colors={["#72BCA5", "#F4DDB4", "#F2AF2B", "#BC0C27", "#EA294C"]}
         />
         <Card.Body>
           {error && <Alert variant="danger">{error}</Alert>}
