@@ -8,6 +8,7 @@
     "@testing-library/user-event": "^12.1.10",
     "bootstrap": "^5.0.1",
     "bootstrap-react": "^0.5.0-alpha.14",
+    "boring-avatars": "^1.5.3",
     "firebase": "^8.6.2",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",

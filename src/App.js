@@ -6,6 +6,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Dashboard } from "../src/pages/Dashboard";
 import { ForgotPassword } from "../src/pages/ForgotPassword";
 import { PrivateRoute } from "./components/PrivateRoute";
+
 const App = () => {
   return (
     <Container style={{ minHeight: "100vh" }}>
