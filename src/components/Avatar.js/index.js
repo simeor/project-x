@@ -9,7 +9,7 @@ export const UserAvatar = ({ size = 40, nameOveride = "" }) => {
     <Avatar
       className={currentUser ? "" : "fade-in"}
       size={size}
-      name={currentUser?.email || nameOveride}
+      name={nameOveride || currentUser?.email}
       variant="beam"
       colors={["#72BCA5", "#F4DDB4", "#F2AF2B", "#BC0C27", "#EA294C"]}
     />

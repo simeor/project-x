@@ -51,7 +51,7 @@ export const SignUp = () => {
               <Form.Label className="mt-1">Password Confirmation</Form.Label>
               <Form.Control type="password" required ref={passwordConfirmRef} />
             </Form.Group>
-            <Button className="w-100 mt-4" type="submit" diabled={loading}>
+            <Button className="w-100 mt-4" type="submit" disabled={loading}>
               Sign Up
             </Button>
           </Form>

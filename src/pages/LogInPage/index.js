@@ -1,51 +1,56 @@
-import React from "react";
+import React, { useState } from "react";
 import { LogIn } from "../../components/auth-components/LogIn";
 import { Button } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { UserAvatar } from "../../components";
+import { changeIconOnMouseMove } from "./utils";
+import { MainSection, LeftSection, RightSection } from "./styles";
+import { ReactComponent as Wave } from "../../media/wave.svg";
 
 export const LogInPage = () => {
+  const [mouse, setMouse] = useState(0);
+
   return (
-    <div
-      style={{
-        display: "grid",
-        gridTemplateColumns: "1.5fr 1fr",
-        height: "100vh",
-        justifyContent: "center",
-        alignItems: "center",
-        width: "100%",
-        textAlign: "center",
-      }}
-    >
-      <section
+    <>
+      <Wave
         style={{
-          height: "100%",
-          backgroundColor: "#F4DDB4",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
+          position: "absolute",
+          top: -50,
+          left: 0,
+          fill: "white",
+          pointerEvents: "none",
+        }}
+      />
+      <MainSection
+        onMouseMove={(e) => {
+          changeIconOnMouseMove(e, setMouse);
         }}
       >
-        <UserAvatar size={100} nameOveride={"hello"} />
-        <h1>Hello Friend</h1>
-        <h3>Sign up now for free to connect</h3>
-        <Link to="/signup">
-          <Button>Join us</Button>
-        </Link>
-      </section>
-      <section
-        style={{
-          height: "100vh",
-          backgroundColor: "#72BCA5",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <LogIn />
-      </section>
-    </div>
+        <LeftSection>
+          <UserAvatar size={120} nameOveride={mouse} />
+          <h1>Hello New Friend</h1>
+          <h3>Sign up now for free</h3>
+          <Link to="/signup">
+            <Button>Join us</Button>
+          </Link>
+        </LeftSection>
+        <RightSection>
+          <UserAvatar size={120} nameOveride={mouse + "h"} />
+          <h1>Hello Old Friend</h1>
+          <h3>Lets Go Inside</h3>
+          <LogIn />
+        </RightSection>
+        <Wave
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: 0,
+            transform: "rotate(180deg)",
+            fill: "#EDB92D",
+            pointerEvents: "none",
+          }}
+        />
+      </MainSection>
+    </>
   );
 };

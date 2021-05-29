@@ -37,7 +37,7 @@ export const ForgotPassword = () => {
               <Form.Control type="email" required ref={emailRef} />
             </Form.Group>
             {attemptCount < 3 && (
-              <Button className="w-100 mt-4" type="submit" diabled={loading}>
+              <Button className="w-100 mt-4" type="submit" disabled={loading}>
                 Reset Password
               </Button>
             )}

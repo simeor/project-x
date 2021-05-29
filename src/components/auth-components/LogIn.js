@@ -10,7 +10,7 @@ export const LogIn = () => {
   const [loading, setLoading] = useState(false);
   const emailRef = useRef();
   const passwordRef = useRef();
-  const { logIn, currentUser } = useAuth();
+  const { logIn, currentUser, signInWithGoogle } = useAuth();
   const history = useHistory();
 
   const handleSubmit = async (e) => {
@@ -27,16 +27,21 @@ export const LogIn = () => {
     setLoading(false);
   };
 
-  const [emailInput, setEmailInput] = useState("");
+  const handleGoogleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+      history.push("/");
+    } catch (err) {
+      setError(`${err}`);
+    }
+  };
 
   return (
     <>
-      <h2 className="text-center mb-4">Log In</h2>
-      <div className=" d-flex align-items-center justify-content-center ">
-        <UserAvatar size={90} nameOveride={emailInput} />
-      </div>
+      {/* <h2 className="text-center mb-4">Log In with Google</h2> */}
+      <div className=" d-flex align-items-center justify-content-center "></div>
       {error && <Alert variant="danger">{error}</Alert>}
-      <Form onSubmit={handleSubmit}>
+      {/* <Form onSubmit={handleSubmit}>
         <Form.Group id="email">
           <Form.Label className="mt-1">Email</Form.Label>
           <Form.Control
@@ -51,18 +56,20 @@ export const LogIn = () => {
           <Form.Control type="password" required ref={passwordRef} />
         </Form.Group>
         {attemptCount < 3 && (
-          <Button className="w-100 mt-4" type="submit" diabled={loading}>
+          <Button className="w-100 mt-4" type="submit" disabled={loading}>
             Log In
           </Button>
         )}
-      </Form>
-      <div className="w-100 text-center mt-3">
+      </Form> */}
+      {/* <div className="w-100 text-center mt-3">
         <Link to="/forgot-password">Forgot Password ?</Link>
       </div>
 
       <div className="w-100 text-center mt-2">
         Dont have an account ? <Link to="/signup">Sign Up</Link>
-      </div>
+      </div> */}
+
+      <Button onClick={() => handleGoogleSignIn()}>Sign In</Button>
     </>
   );
 };

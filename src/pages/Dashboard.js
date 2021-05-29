@@ -23,6 +23,8 @@ export const Dashboard = () => {
     }
   };
 
+  console.log("user", currentUser);
+
   return (
     <div
       style={{
