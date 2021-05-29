@@ -2,7 +2,11 @@ import React, { useState } from "react";
 import { Card, Button, Alert } from "react-bootstrap";
 import { useAuth } from "../context/AuthContext";
 import { Link, useHistory } from "react-router-dom";
-import Avatar from "boring-avatars";
+import background from "../media/background.jpg";
+import { Container } from "react-bootstrap";
+import { UserAvatar } from "../components";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { NavBar } from "../components";
 
 export const Dashboard = () => {
   const [error, setError] = useState("");
@@ -20,29 +24,34 @@ export const Dashboard = () => {
   };
 
   return (
-    <>
-      <Card>
-        <Avatar
-          size={100}
-          name={currentUser?.email}
-          variant="beam"
-          colors={["#72BCA5", "#F4DDB4", "#F2AF2B", "#BC0C27", "#EA294C"]}
-        />
-        <Card.Body>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <strong>Email:</strong>
-          {currentUser?.email}
-          {console.log(currentUser)}
-          <Link to="/update-profile" className="btn btn-primary">
-            Update Profile
-          </Link>
-        </Card.Body>
-        <div className="w-100 text-center mt-2">
-          <Button variant="link" onClick={handleLogOut}>
-            Log out
-          </Button>
-        </div>
-      </Card>
-    </>
+    <div
+      style={{
+        backgroundImage: `url(${background})`,
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        height: "100vh",
+      }}
+    >
+      <Container>
+        <NavBar />
+        <Card>
+          <UserAvatar size={55} />
+          <Card.Body>
+            {error && <Alert variant="danger">{error}</Alert>}
+            <strong>Email:</strong>
+            {currentUser?.email}
+            <Link to="/update-profile" className="btn btn-primary">
+              Update Profile
+            </Link>
+          </Card.Body>
+          <div className="w-100 text-center mt-2">
+            <Button variant="link" onClick={handleLogOut}>
+              Log out
+            </Button>
+          </div>
+        </Card>
+      </Container>
+    </div>
   );
 };

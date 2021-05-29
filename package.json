@@ -10,6 +10,8 @@
     "bootstrap-react": "^0.5.0-alpha.14",
     "boring-avatars": "^1.5.3",
     "firebase": "^8.6.2",
+    "jquery": "^3.6.0",
+    "popper.js": "^1.16.1",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.0",
     "react-dom": "^17.0.2",
